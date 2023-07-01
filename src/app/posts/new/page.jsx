@@ -1,18 +1,20 @@
-import { useState } from " react"
-import { useRouter } from "next/router"
+'use client'
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import Form from "@/app/components/Form"
 
 export default function Newpost() {
 	const router = useRouter()
 	const [submitting, setSubmitting] = useState(false)
-	const [post, usePost] = useState({ title: "" })
+	const [post, setPost] = useState({ title: "" })
 
 	const createPost = async (e) => {
 		e.preventDefault()
 		setSubmitting(true)
 
 		try {
-			const res = await fetch("http://localhost:3005/posts/new", {
+			const res = await fetch("http://localhost:3005/posts/", {
 				method: "POST",
 				body: JSON.stringify({
 					title: post.title,
