@@ -16,6 +16,9 @@ export default function Newpost() {
 		try {
 			const res = await fetch("http://localhost:3005/posts/", {
 				method: "POST",
+				headers: {
+					"Content-type": "application/json"
+				},
 				body: JSON.stringify({
 					title: post.title,
 				}),
