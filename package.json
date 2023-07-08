@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "server": "json-server --watch db.json --port 3005"
+    "server": "json-server --watch db.json --port 3005 --no-cors"
   },
   "dependencies": {
     "eslint": "8.43.0",
