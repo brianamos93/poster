@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import styles from './page.module.css'
+import Post from '@/app/components/Post'
 
 async function getPosts() {
   const res = await fetch('http://localhost:3005/posts/')
@@ -18,8 +18,11 @@ export default async function Home() {
   return (
     <main className={styles.main}>
       <ul>
-        {posts.map((posts) => (
-          <li key={post.id}>{post.title}</li>
+        {posts.map((post) => (
+          <Post
+            key={post.id}
+            post={post}
+          />
         ))}
       </ul>
     </main>
