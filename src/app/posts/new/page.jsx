@@ -14,7 +14,7 @@ export default function Newpost() {
 		setSubmitting(true)
 
 		try {
-			const res = await fetch("http://localhost:3005/posts/", {
+			const res = await fetch("http://localhost:3001/api/posts/", {
 				method: "POST",
 				headers: {
 					"Content-type": "application/json"

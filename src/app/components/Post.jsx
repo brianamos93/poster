@@ -21,7 +21,7 @@ const Post = ({ key, post }) => {
 	const editPost = (key) => {
 
 
-		router.push(`http://localhost:3000/posts/edit?id=${key}`)
+		router.push(`http://localhost:3001/api/posts/edit?id=${key}`)
 	}
 
 	return (

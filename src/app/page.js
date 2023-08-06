@@ -2,7 +2,7 @@ import styles from './page.module.css'
 import Post from '@/app/components/Post'
 
 async function getPosts() {
-  const res = await fetch('http://localhost:3005/posts/')
+  const res = await fetch('http://localhost:3001/api/posts/')
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data')

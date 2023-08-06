@@ -15,7 +15,7 @@ const UpdatePrompt = () => {
 
   useEffect(() => {
     const getPostDetails = async () => {
-      const response = await fetch(`http://localhost:3005/posts/${postId}`);
+      const response = await fetch(`http://localhost:3001/api/posts/${postId}`);
       const data = await response.json();
 
       setPost({
@@ -33,7 +33,7 @@ const UpdatePrompt = () => {
     if (!postId) return alert("Missing PostId!");
 
     try {
-      const response = await fetch(`http://localhost:3005/posts/${postId}`, {
+      const response = await fetch(`http://localhost:3001/api/posts/${postId}`, {
         method: "PATCH",
 		    headers: {
 			"Content-type": "application/json"
