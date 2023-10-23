@@ -1,19 +1,26 @@
 "use client"
-import { useState } from "react"
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
 
 import loginService from '../services/login'
 import noteService from '../services/note'
 
 export default function Posts() {
+	const [newNote, setNewNote] = useState('')
+	const [notes, setNotes] = useState([])
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 	const [user, setUser] = useState(null)
 	const [errorMessage, setErrorMessage] = useState('')
 
-
-
 	useEffect(() => {
+		noteService
+		  .getAll()
+		  .then(initialNotes => {
+			setNotes(initialNotes)
+		  })
+	  }, [])
+	
+	  useEffect(() => {
 		const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser')
 		if (loggedUserJSON) {
 		  const user = JSON.parse(loggedUserJSON)
@@ -43,6 +50,26 @@ export default function Posts() {
 			}, 5000)
 		}
 	}
+
+	const handleNoteChange = (event) => {
+		setNewNote(event.target.value)
+	  }
+
+	
+	const addNote = (event) => {
+		event.preventDefault()
+		const noteObject = {
+		  content: newNote,
+		  important: Math.random() > 0.5,
+		}
+	  
+		noteService
+		  .create(noteObject)
+			.then(returnedNote => {
+			setNotes(notes.concat(returnedNote))
+			setNewNote('')
+		  })
+	  }
 
 	const loginForm = () => (
 		<form onSubmit={handleLogin}>

@@ -3,14 +3,13 @@ const login = async credentials => {
   method: "POST",  
   headers: {
       "Content-Type": "application/json",
-      Accept: "application/json",
     },
     body: JSON.stringify({
       username: credentials.username,
       password: credentials.password
     })
   })
-  return response.data
+  return response.json()
 }
 
 export default { login }

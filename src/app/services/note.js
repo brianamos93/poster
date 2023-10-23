@@ -2,12 +2,12 @@ const baseUrl = 'http://localhost:3001/api/notes'
 
 let token = null
 const setToken = newToken => {  
-  token = `Bearer ${newToken}`
+  token = `bearer ${newToken}`
 }
 
 const getAll = () => {
   const request = fetch(baseUrl)
-  return request.then(response => response.data)
+  return request.then(response => response.json())
 }
 
 const create = async newObject => {
